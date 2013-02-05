@@ -14,6 +14,18 @@
 \usepackage{listings}
 \usepackage[bottom=4cm]{geometry}
 \usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\fancypagestyle{plain}{
+	\renewcommand{\footrulewidth}{1pt}
+	\renewcommand{\headrulewidth}{1pt}
+	\fancyhf{}
+	\fancyhead[R]{\#Linux}
+	\fancyhead[L]{\today}
+	\fancyhead[C]{Linksammlung}
+	\fancyfoot[C]{\thepage/\pageref{LastPage}}
+}
+\pagestyle{plain}
 
 \hypersetup{
     colorlinks=true, 
