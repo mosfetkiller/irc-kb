@@ -16,6 +16,11 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
+\usepackage{tabularx}
+
+\font\xlix=wlc39 scaled 3600
+\newcommand{\barcode}[1]{{\xlix@#1@}}
+
 \fancypagestyle{plain}{
 	\renewcommand{\footrulewidth}{1pt}
 	\renewcommand{\headrulewidth}{1pt}
@@ -139,4 +144,37 @@ Das Verhältnis von $\frac{\mbox{Schokoladenpulver}}{\mbox{Kakaopulver}+\mbox{Ma
 \subsection{Haare}
 \subsubsection{Kokosöl}
 Wenn die Haare sehr trocken sind/neigen sich zu verknoten, kann es helfen, die Längen vor dem Duschen mit Kokosöl (echtes) einzufetten. Alternativ ins trockene Haar eine sehr kleine Menge einarbeiten.
+
+\part{Kommunkatives}
+
+\newpage
+\section{Barcodes}
+Diese Barcodes sollen sie Kommunikation im \texttt{IRC} vereinfachen :) \newline
+
+\begin{tabularx}{\textwidth}{m{5cm}m{5cm}m{5cm}}
+  \barcode{tja.} & \barcode{aha} & \barcode{jaja} \\
+   tja. & aha & jaja \\
+
+\\
+  \barcode{re} & \barcode{wb} & \barcode{hi} \\
+   re & wb & hi \\
+
+\\
+  \barcode{nadann} & \barcode{ahso} & \barcode{hmm} \\
+   nadann & ahso & hmm \\
+
+\\
+  \barcode{sskm} & \barcode{fail} & \barcode{ba-dumts} \\
+   sskm & fail & ba-dumts \\
+
+\\
+  \barcode{ja} & \barcode{nein} & \barcode{evtl.} \\
+   ja & nein & evtl. \\
+
+\\
+  \barcode{depp} & \barcode{knalltuete} & \barcode{pfosten} \\
+   depp & knalltuete & pfosten \\
+\end{tabularx}
+
+
 \end{document}
