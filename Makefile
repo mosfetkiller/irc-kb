@@ -29,4 +29,4 @@ cleanpdf:
 
 #remove *.bak
 cleanbak:
-	find -iname "*.bak" | xargs rm
+	find -iname "*.bak" -exec rm '{}' '+'
