@@ -1,5 +1,8 @@
 #linux wiki
 ===========
+
+About this Repo
+---------------
 Welcome the the #linux (@umformer.net) wiki. Feel free to contribute to the tex-file and rebuild it :)
 
 merging
