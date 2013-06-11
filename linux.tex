@@ -21,14 +21,20 @@
 \usepackage{cmap}
 \usepackage{tabularx}
 
+\newcommand{\irc}{\href{http://chat.mibbit.com/?channel=\%23mosfetkiller\&nick=your_nick_here\&server=irc.rizon.net\&autoConnect=true}{\#mosfetkiller@irc.rizon.net:6667}}
+\author{\irc}
+\newcommand{\about}{Sammlung nützlicher Inhalte}
+\title{\about}
+
 \fancypagestyle{plain}{
 	\renewcommand{\footrulewidth}{1pt}
 	\renewcommand{\headrulewidth}{1pt}
 	\fancyhf{}
-	\fancyhead[R]{\#mosfetkiller @ irc.rizon.net}
-	\fancyhead[L]{\today}
-	\fancyhead[C]{Wissenssammlung}
-	\fancyfoot[C]{\thepage/\pageref{LastPage}}
+	\fancyhead[R]{\irc}
+	\fancyhead[L]{\about}
+	\fancyhead[C]{}
+	\fancyfoot[R]{Seite \thepage/\pageref{LastPage}}
+	\fancyfoot[L]{\today}
 }
 \pagestyle{plain}
 
@@ -39,26 +45,29 @@
     urlcolor=blue
 }
 
-\title{Sammlung nützlicher Inhalte}
-\author{\href{http://chat.mibbit.com/?channel=\%23mosfetkiller\&nick=your_nick_here\&server=irc.rizon.net\&autoConnect=true}{\#mosfetkiller@irc.rizon.net:6667}}
+
+
 \newcommand{\linkitem}[1]{\item \url{#1}}
 
 
 \begin{document}
 \maketitle
-
 \tableofcontents
 \clearpage
 
+\newpage
 \part{Technisches}
 \input{./parts/technical.tex}
 
+\newpage
 \part{Lebenswichtiges}
 \input{./parts/life.tex}
 
+\newpage
 \part{Kommunkatives}
 \input{./parts/communication.tex}
 
+\newpage
 \part{Projekte}
 \input{./parts/projects.tex}
 
