@@ -1,8 +1,8 @@
 % don't forget to build it twice %
 \documentclass[oneside,12pt,a4paper]{scrartcl}
-\usepackage[T1]{fontenc}
+\usepackage[OT2, T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
+\usepackage[russian, ngerman]{babel}
 
 \usepackage[bottom=4cm]{geometry}
 \usepackage[bottom]{footmisc}
@@ -21,14 +21,13 @@
 \usepackage{cmap}
 \usepackage{tabularx}
 
-
 \fancypagestyle{plain}{
 	\renewcommand{\footrulewidth}{1pt}
 	\renewcommand{\headrulewidth}{1pt}
 	\fancyhf{}
 	\fancyhead[R]{\#mosfetkiller @ irc.rizon.net}
 	\fancyhead[L]{\today}
-	\fancyhead[C]{Linksammlung}
+	\fancyhead[C]{Wissenssammlung}
 	\fancyfoot[C]{\thepage/\pageref{LastPage}}
 }
 \pagestyle{plain}
@@ -52,123 +51,15 @@
 \clearpage
 
 \part{Technisches}
-\section{Distributionsauswahl}
-\begin{itemize}
-\linkitem{http://distrowatch.com/}
-\linkitem{http://www.zegeniestudios.net/ldc/index.php?lang=de}
-\end{itemize}
-
-
-\section{Serveradministration}
-\begin{itemize}
-\linkitem{http://daemonkeeper.net/70/dein-neuer-linux-server/}
-\linkitem{http://www.forwiss.uni-passau.de/~berberic/klickop.html}
-\end{itemize}
-	\subsection{UDev}
-	\begin{itemize}
-	\linkitem{http://www.reactivated.net/writing_udev_rules.html}
-	\end{itemize}
-
-\section{Linux im Allgemeinen}
-\begin{itemize}
-\linkitem{http://daemonkeeper.net/43/linux-ist-nichts-fuer-dich-lass-es/}
-\end{itemize}
-
-\section{IRC}
-\begin{itemize}
-\linkitem{http://sackheads.org/~bnaylor/spew/away_msgs.html}
-\linkitem{http://irssi.org/}
-\end{itemize}
-
-\section{Memes}
-\begin{itemize}
-%we should cache them to prevent disapperance %
-\linkitem{http://cdn.memegenerator.net/instances/400x/15098309.jpg}
-\linkitem{http://filestore.dasnet.bplaced.de/img/mem.png}
-\linkitem{http://genetic-defect.eu/hammer.png}
-\linkitem{http://cdn.memegenerator.net/instances/400x/37429472.jpg}
-\linkitem{http://memecrunch.com/meme/KFBU/linus-torvalds-verachtet-dich/image.png}
-\end{itemize}
-
-\section{Programmierung}
-\begin{itemize}
-\linkitem{http://www.infosun.fim.uni-passau.de/cl/lehre/ppp2013/hinweise_zu_c.html}
-\linkitem{http://yorickpeterse.com/articles/use-bcrypt-fool/}
-\linkitem{https://wiki.theory.org/YourLanguageSucks}
-\end{itemize}
-
-\subsection{PHP}
-\begin{itemize}
-\linkitem{http://phpsadness.com/}
-\linkitem{http://me.veekun.com/blog/2012/04/09/php-a-fractal-of-bad-design/}
-\end{itemize}
-
-\section{\glqq Nützliche \grqq Links}
-\begin{itemize}
-\linkitem{http://badum-tish.com/}
-\linkitem{http://www.dramabutton.com/}
-\end{itemize}
+\input{./parts/technical.tex}
 
 \part{Lebenswichtiges}
-\section{Rezepte}
-\subsection{Fondue}
-Fondue à la Doeme:
-
-\subsubsection{Zutaten}
-Für eine Person:
-\begin{itemize}
-\item 125g Vacherin
-\item 125g Greyerzer
-\item Weisswein
-\item Kirschwasser
-\item Maisstärke
-\item Knoblauch
-\end{itemize}
-\subsubsection{Rezept}
-
-\begin{enumerate}
-\item Fonduecaquelon~\footnote{Eine Pfanne} mit ein paar Knoblauchzehen ausreiben.
-\item Caquelon mit dem Knoblauch etwas erhitzen, und Weisswein zugeben (ca. 3mm $\frac {\mbox{Füllhöhe}} {\mbox{Person}}$ bei normaler Caquelondimension [$\sim$22cm])~\footnote{Etwas Weisswein}.
-\item Nach weiterem kurzen Erwärmen den geriebenen Käse zugeben.
-\item Die Mischung mit Rührbewegungen der Form einer 8 folgend zum globalen Schmelzpunkt begleiten~\footnote{Rühren bis die Brühe flüssig ist.}.
-\item Sobald das Fondue flüssig ist, Maisstärke in einem Glässchen Kirschgeist zu einer Suspension verrühren, und selbige anschliessend dem Fondue beifügen.
-\item Den Fonduecaquelon geographisch auf den Rechaud replazieren.
-\item \emph{Solange das Fondue erwärmt wird, muss es permanent mit einem Löffel oder Löffelersatz~\footnote{Gabel mit Brotaufsatz} gerührt werden.} 
-\end{enumerate}
-
-\subsection{Met-Hollunder-Schorle}
-\begin{itemize}
-\item $2^{0}$ Anteile Hollundersirup
-\item $2^{2}$ Anteile Met
-\item $2^{3}$ Anteile Mineralwasser, spritzig
-\end{itemize}
-\subsection{Gute heisse Schokolade}
-\label{sec:hot_chocolate}
-Mengen müssen selber evaluiert werden!
-\begin{itemize}
-	\item Milch.~\footnote{\url{http://www.youtube.com/watch?v=w4aLThuU008}}
-	\item Kakaopulver(Kein Schokoladenpulver, das reine).
-	\item Mascobadozucker, bzw. brauner Zucker.
-	\item Schokoladenpulver.
-\end{itemize}
-Das Verhältnis von $\frac{\mbox{Schokoladenpulver}}{\mbox{Kakaopulver}+\mbox{Mascobadozucker}}$ sollte unter $\frac{1}{1}$ liegen, muss aber wie bereits erwähnt selbst ermittelt werden.
-\subsection{Chocolat Rum}
-\begin{itemize}
-	\item Schokolade gemäss Kapitel~\ref{sec:hot_chocolate}, Seite~\pageref{sec:hot_chocolate}.
-	\item Einen Schuss Rum.
-	\item Ein wortwörtliches Sahnehäubchen.
-\end{itemize}
-\section{*.Körper}
-\subsection{Haare}
-\subsubsection{Kokosöl}
-Wenn die Haare sehr trocken sind/neigen sich zu verknoten, kann es helfen, die Längen vor dem Duschen mit Kokosöl (echtes) einzufetten. Alternativ ins trockene Haar eine sehr kleine Menge einarbeiten.
+\input{./parts/life.tex}
 
 \part{Kommunkatives}
+\input{./parts/communication.tex}
 
-\section{Richtig Fragen stellen}
-\begin{itemize}
-\linkitem{http://www.catb.org/esr/faqs/smart-questions.html}
-\end{itemize}
-
+\part{Projekte}
+\input{./parts/projects.tex}
 
 \end{document}
