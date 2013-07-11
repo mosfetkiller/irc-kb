@@ -1,6 +1,8 @@
 # simple makefile for latex processing with glossaries
 # filename without extention
-# written by jwacalex for Team2- SEP WS2012/13 @ Uni Passau
+# written by jwacalex for Team2 - SEP WS2012/13 @ Uni Passau
+# revision by doeme for #mosfetkiller @ irc.rizon.net 
+
 NAMEBASE=linux
 TEMPORARY_FILES=$(NAMEBASE).gls $(NAMEBASE).aux $(NAMEBASE).glg $(NAMEBASE).glo $(NAMEBASE).ist $(NAMEBASE).log $(NAMEBASE).out $(NAMEBASE).toc $(NAMEBASE).bak $(NAMEBASE).xdy $(NAMEBASE).thm
 LATEX=latex
