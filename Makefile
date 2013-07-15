@@ -5,7 +5,7 @@
 # https://raw.github.com/jwacalex/linux_wiki/master/Makefile
 
 # filename without extention
-NAMEBASE=linux
+NAMEBASE=mosfetkiller
 
 
 TEMPORARY_FILES=$(NAMEBASE).nav $(NAMEBASE).snm $(NAMEBASE).gls $(NAMEBASE).aux $(NAMEBASE).glg $(NAMEBASE).glo $(NAMEBASE).ist $(NAMEBASE).log $(NAMEBASE).out $(NAMEBASE).toc $(NAMEBASE).bak $(NAMEBASE).xdy $(NAMEBASE).thm
