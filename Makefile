@@ -34,6 +34,7 @@ glossary: tex
 
 
 # cleanup temporary files
+.PHONY:
 clean:
 	rm -f $(TEMPORARY_FILES)
 
