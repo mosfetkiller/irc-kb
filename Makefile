@@ -8,7 +8,7 @@
 NAMEBASE=mosfetkiller
 
 
-TEMPORARY_FILES=$(NAMEBASE).nav $(NAMEBASE).snm $(NAMEBASE).gls $(NAMEBASE).aux $(NAMEBASE).glg $(NAMEBASE).glo $(NAMEBASE).ist $(NAMEBASE).log $(NAMEBASE).out $(NAMEBASE).toc $(NAMEBASE).bak $(NAMEBASE).xdy $(NAMEBASE).thm
+TEMPORARY_FILES=$(NAMEBASE).acn $(NAMEBASE).acr $(NAMEBASE).alg $(NAMEBASE).aux $(NAMEBASE).bak $(NAMEBASE).bbl $(NAMEBASE).blg $(NAMEBASE).dvi $(NAMEBASE).fdb_latexmk $(NAMEBASE).glg  $(NAMEBASE).glo  $(NAMEBASE).gls $(NAMEBASE).idx $(NAMEBASE).ilg $(NAMEBASE).ind $(NAMEBASE).ist $(NAMEBASE).lof $(NAMEBASE).log $(NAMEBASE).lot $(NAMEBASE).maf $(NAMEBASE).mtc $(NAMEBASE).mtc0 $(NAMEBASE).nav $(NAMEBASE).nlo $(NAMEBASE).out $(NAMEBASE).pdfsync $(NAMEBASE).ps $(NAMEBASE).snm $(NAMEBASE).synctex.gz $(NAMEBASE).tdo $(NAMEBASE).thm $(NAMEBASE).toc $(NAMEBASE).vrb $(NAMEBASE).xdy
 
 LATEX=latex
 LATEXOPTS=-shell-escape -halt-on-error
