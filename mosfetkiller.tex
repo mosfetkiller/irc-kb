@@ -1,0 +1,74 @@
+% don't forget to build it twice %
+\documentclass[oneside,12pt,a4paper]{scrartcl}
+\usepackage[OT2, T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian, ngerman]{babel}
+
+\usepackage[bottom=4cm]{geometry}
+\usepackage[bottom]{footmisc}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{cmap}
+\usepackage{tabularx}
+
+\newcommand{\irc}{\href{http://chat.mibbit.com/?channel=\%23mosfetkiller\&nick=your_nick_here\&server=irc.rizon.net\&autoConnect=true}{\#mosfetkiller@irc.rizon.net:6667}}
+\author{\irc}
+\newcommand{\about}{Sammlung nützlicher Inhalte}
+\title{\about}
+
+\fancypagestyle{plain}{
+	\renewcommand{\footrulewidth}{1pt}
+	\renewcommand{\headrulewidth}{1pt}
+	\fancyhf{}
+	\fancyhead[R]{\irc}
+	\fancyhead[L]{\about}
+	\fancyhead[C]{}
+	\fancyfoot[R]{Seite \thepage/\pageref{LastPage}}
+	\fancyfoot[L]{\today}
+}
+\pagestyle{plain}
+
+\hypersetup{
+    colorlinks=true, 
+    linktoc=all,    
+    allcolors=black, 
+    urlcolor=blue
+}
+
+
+
+\newcommand{\linkitem}[1]{\item \url{#1}}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\newpage
+\part{Technisches}
+\input{./parts/technical.tex}
+
+\newpage
+\part{Lebenswichtiges}
+\input{./parts/life.tex}
+
+\newpage
+\part{Kommunkatives}
+\input{./parts/communication.tex}
+
+\newpage
+\part{Projekte}
+\input{./parts/projects.tex}
+
+\end{document}
