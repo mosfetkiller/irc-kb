@@ -1,10 +1,10 @@
-# simple makefile for latex processing with glossaries
-# written by jwacalex for Team2 - SEP WS2012/13 @ Uni Passau
-# revision by doeme for #mosfetkiller @ irc.rizon.net 
-# you can find the current version there: 
+# Simple makefile for latex processing with glossaries
+# Written by jwacalex for Team2 - SEP WS2012/13 @ Uni Passau
+# Revision by Doeme for #mosfetkiller @ irc.rizon.net 
+# You can find the current version there: 
 # https://raw.github.com/jwacalex/linux_wiki/master/Makefile
 
-# filename without extention
+# Filename without extension
 NAMEBASE=mosfetkiller
 
 
@@ -15,13 +15,13 @@ LATEXOPTS=-shell-escape -halt-on-error
 CONVERT=convert
 DENSITY=500
 
-# creates the document, (merges with glossary,) cleans up temp. files
+# Creates the document, (merges with glossary,) cleans up temporary files
 all: tex 
 
-# creating the pdf from tex
+# Creating the pdf from tex
 tex: $(NAMEBASE).pdf
 
-# createing the glossary
+# Creating the glossary
 glossary: tex
 	makeglossaries $(NAMEBASE)
 	
@@ -33,16 +33,16 @@ glossary: tex
 	$(CONVERT) -density $(DENSITY) $< $@
 
 
-# cleanup temporary files
+# Clean up temporary files
 .PHONY:
 clean:
 	rm -f $(TEMPORARY_FILES)
 
-#remove pdf
+# Remove pdf
 cleanpdf:
 	rm -f $(NAMEBASE).pdf
 
-#remove *.bak
+# Remove *.bak
 cleanbak:
 	find -iname "*.bak" -exec rm '{}' '+'
 
