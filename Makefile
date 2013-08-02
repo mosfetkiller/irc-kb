@@ -6,7 +6,7 @@
 
 # Filename without extension
 NAMEBASE=mosfetkiller
-
+DEPENDENCIES:=$(wildcard parts/*.tex)
 
 TEMPORARY_FILES=$(NAMEBASE).acn $(NAMEBASE).acr $(NAMEBASE).alg $(NAMEBASE).aux $(NAMEBASE).bak $(NAMEBASE).bbl $(NAMEBASE).blg $(NAMEBASE).dvi $(NAMEBASE).fdb_latexmk $(NAMEBASE).glg  $(NAMEBASE).glo  $(NAMEBASE).gls $(NAMEBASE).idx $(NAMEBASE).ilg $(NAMEBASE).ind $(NAMEBASE).ist $(NAMEBASE).lof $(NAMEBASE).log $(NAMEBASE).lot $(NAMEBASE).maf $(NAMEBASE).mtc $(NAMEBASE).mtc0 $(NAMEBASE).nav $(NAMEBASE).nlo $(NAMEBASE).out $(NAMEBASE).pdfsync $(NAMEBASE).ps $(NAMEBASE).snm $(NAMEBASE).synctex.gz $(NAMEBASE).tdo $(NAMEBASE).thm $(NAMEBASE).toc $(NAMEBASE).vrb $(NAMEBASE).xdy
 
@@ -16,23 +16,20 @@ CONVERT=convert
 DENSITY=500
 
 # Creates the document, (merges with glossary,) cleans up temporary files
-all: tex 
-
+all: tex
 # Creating the pdf from tex
-tex: $(NAMEBASE).pdf
-
+tex : $(NAMEBASE).pdf
+$(NAMEBASE).pdf: $(DEPENDENCIES)
 # Creating the glossary
 glossary: tex
 	makeglossaries $(NAMEBASE)
-	
 %.pdf: %.tex %.toc %.aux
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
-%.dvi: %.tex 
+%.dvi: %.tex %.toc %.aux
 	$(LATEX) $(LATEXOPTS) -output-format dvi $<
 %.png: %.pdf
 	$(CONVERT) -density $(DENSITY) $< $@
-
-
+%.tex: 
 # Clean up temporary files
 .PHONY:
 clean:
