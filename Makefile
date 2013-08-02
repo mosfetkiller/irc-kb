@@ -7,7 +7,7 @@
 # Filename with extension
 TARGET=mosfetkiller.pdf
 
-NAMEBASE=$(basename $(TARGET)) 
+NAMEBASE=$(basename $(TARGET))
 DEPENDENCIES:=$(wildcard parts/*.tex)
 
 TEMPORARY_FILES=$(addprefix $(NAMEBASE)., acn acr alg aux bak bbl blg dvi fdb_latexmk glg  glo  gls idx ilg ind ist lof log lot maf mtc mtc0 nav nlo out pdfsync ps snm synctex.gz tdo thm toc vrb xdy)
