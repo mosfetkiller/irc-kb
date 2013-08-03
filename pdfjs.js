@@ -152,9 +152,9 @@ function displayPDF(pdffile){
 		var context;
 		var reference;
 		var addendum="";
-		for(i=1; i<pdf.numPages; i++){
+		for(i=1; i<=pdf.numPages; i++){
 			reference=generateCanvas();
-			if(i==pdf.numPages-1){
+			if(i==pdf.numPages){
 				addendum="if(typeof(success_callback)==='function') success_callback();";
 			}
 			pdf.getPage(i).then(new Function("page",
