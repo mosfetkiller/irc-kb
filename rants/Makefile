@@ -1,5 +1,3 @@
-.PHONY:
-.SILENT:
 php_rant:
 	make -f ../Makefile TARGET=php.pdf
 
