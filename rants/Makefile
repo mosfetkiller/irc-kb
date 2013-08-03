@@ -1,6 +1,4 @@
-php_rant:
-	make -f ../Makefile TARGET=php.pdf
-
-php_rant_clean:
-	make -f ../Makefile clean TARGET=php.pdf
-
+TARGET=$(firstword $(MAKECMDGOALS))
+.SILENT:
+%:
+	make -f ../Makefile $(filter-out $(TARGET),$(MAKECMDGOALS)) TARGET=$(TARGET)
