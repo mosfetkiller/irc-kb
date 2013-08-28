@@ -13,7 +13,7 @@ DEPENDENCIES:=$(wildcard parts/*.tex)
 TEMPORARY_FILES=$(addprefix $(NAMEBASE)., acn acr alg aux bak bbl blg dvi fdb_latexmk glg  glo  gls idx ilg ind ist lof log lot maf mtc mtc0 nav nlo out pdfsync ps snm synctex.gz tdo thm toc vrb xdy)
 
 LATEX=latex
-MKGLOASSARIES=makeglossaries
+MAKEGLOS=makeglossaries
 BIBTEX=bibtex
 LATEXOPTS=-shell-escape -halt-on-error
 CONVERT=convert
@@ -24,11 +24,9 @@ all: tex
 # Creating the pdf from tex
 tex : $(TARGET)
 $(TARGET): $(DEPENDENCIES)
-# Creating the glossary
-glossary: tex
-	makeglossaries $(NAMEBASE)
 %.pdf: %.tex %.toc %.aux
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
+	if [ -a $(NAMEBASE).glo ]; then make $(NAMEBASE).gls; fi;
 	if [ -a $(NAMEBASE).bib ]; then make $(NAMEBASE).bib; fi;
 %.dvi: %.tex %.toc %.aux
 	$(LATEX) $(LATEXOPTS) -output-format dvi $<
@@ -61,3 +59,7 @@ cleanall: clean cleanbak cleanpdf
 	$(BIBTEX) $*
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
+%.gls:  %.aux %.tex
+	$(MAKEGLOS) $*
+	$(LATEX) $(LATEXOPTS) -output-format pdf $*
+	$(LATEX) $(LATEXOPTS) -output-format pdf $*
