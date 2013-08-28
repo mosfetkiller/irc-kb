@@ -27,8 +27,9 @@ $(TARGET): $(DEPENDENCIES)
 # Creating the glossary
 glossary: tex
 	makeglossaries $(NAMEBASE)
-%.pdf: %.tex %.toc %.aux %.blg
+%.pdf: %.tex %.toc %.aux
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
+	if [ -a $(NAMEBASE).bib ]; then make $(NAMEBASE).bib; fi;
 %.dvi: %.tex %.toc %.aux
 	$(LATEX) $(LATEXOPTS) -output-format dvi $<
 %.png: %.pdf
@@ -56,6 +57,7 @@ cleanall: clean cleanbak cleanpdf
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
 %.aux: %.tex
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
-%.blg: %.tex %.aux
+%.bib: %.tex %.aux 
 	$(BIBTEX) $*
-	$(LATEX) $(LATEXOPTS) -output-format pdf $< #another round to update references
+	$(LATEX) $(LATEXOPTS) -output-format pdf $<
+	$(LATEX) $(LATEXOPTS) -output-format pdf $<
