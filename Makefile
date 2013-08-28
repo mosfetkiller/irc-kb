@@ -13,6 +13,8 @@ DEPENDENCIES:=$(wildcard parts/*.tex)
 TEMPORARY_FILES=$(addprefix $(NAMEBASE)., acn acr alg aux bak bbl blg dvi fdb_latexmk glg  glo  gls idx ilg ind ist lof log lot maf mtc mtc0 nav nlo out pdfsync ps snm synctex.gz tdo thm toc vrb xdy)
 
 LATEX=latex
+MKGLOASSARIES=makeglossaries
+BIBTEX=bibtex
 LATEXOPTS=-shell-escape -halt-on-error
 CONVERT=convert
 DENSITY=500
@@ -25,13 +27,14 @@ $(TARGET): $(DEPENDENCIES)
 # Creating the glossary
 glossary: tex
 	makeglossaries $(NAMEBASE)
-%.pdf: %.tex %.toc %.aux
+%.pdf: %.tex %.toc %.aux %.blg
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
 %.dvi: %.tex %.toc %.aux
 	$(LATEX) $(LATEXOPTS) -output-format dvi $<
 %.png: %.pdf
 	$(CONVERT) -density $(DENSITY) $< $@
 %.tex: 
+
 # Clean up temporary files
 .PHONY:
 clean:
@@ -45,8 +48,14 @@ cleanpdf:
 cleanbak:
 	find -iname "*.bak" -exec rm '{}' '+'
 
+# Remove all compiled outputs
+cleanall: clean cleanbak cleanpdf
+
 .SECONDARY:
 %.toc: %.tex
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
 %.aux: %.tex
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
+%.blg: %.tex %.aux
+	$(BIBTEX) $*
+	$(LATEX) $(LATEXOPTS) -output-format pdf $< #another round to update references
