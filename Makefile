@@ -9,7 +9,7 @@ TARGET=mosfetkiller.pdf
 
 NAMEBASE=$(basename $(TARGET))
 DEPENDENCIES:=$(wildcard parts/*.tex)
-FEATUREDEPS:=$(wildcard $(NAMEBASE).glo) $(wildcard *.bib)
+FEATUREDEPS:=$(NAMEBASE).gls $(wildcard *.bib)
 
 TEMPORARY_FILES=$(addprefix $(NAMEBASE)., acn acr alg aux bak bbl blg dvi fdb_latexmk glg  glo  gls idx ilg ind ist lof log lot maf mtc mtc0 nav nlo out pdfsync ps snm synctex.gz tdo thm toc vrb xdy)
 
@@ -60,7 +60,7 @@ cleanall: clean cleanbak cleanpdf
 	#Since we do not make the target, we have to at least touch it.
 	touch $@ 
 %.gls: $(NAMEBASE).aux 
-	$(MAKEGLOS) $(NAMEBASE).aux 
+	$(MAKEGLOS) $(NAMEBASE) 
 	$(LATEX) $(LATEXOPTS) -output-format pdf $(NAMEBASE).tex
 	#Since we do not make the target, we have to at least touch it.
 	touch $@
