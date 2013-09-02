@@ -9,6 +9,7 @@ TARGET=mosfetkiller.pdf
 
 NAMEBASE=$(basename $(TARGET))
 DEPENDENCIES:=$(wildcard parts/*.tex)
+FEATUREDEPS:=$(wildcard $(NAMEBASE).glo) $(wildcard *.bib)
 
 TEMPORARY_FILES=$(addprefix $(NAMEBASE)., acn acr alg aux bak bbl blg dvi fdb_latexmk glg  glo  gls idx ilg ind ist lof log lot maf mtc mtc0 nav nlo out pdfsync ps snm synctex.gz tdo thm toc vrb xdy)
 
@@ -23,11 +24,9 @@ DENSITY=500
 all: tex
 # Creating the pdf from tex
 tex : $(TARGET)
-$(TARGET): $(DEPENDENCIES)
+$(TARGET):  $(FEATUREDEPS) $(DEPENDENCIES) 
 %.pdf: %.tex %.toc %.aux
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
-	if [ -a $(NAMEBASE).glo ]; then make $(NAMEBASE).gls; fi;
-	if [ -a $(NAMEBASE).bib ]; then make $(NAMEBASE).bib; fi;
 %.dvi: %.tex %.toc %.aux
 	$(LATEX) $(LATEXOPTS) -output-format dvi $<
 %.png: %.pdf
@@ -55,11 +54,13 @@ cleanall: clean cleanbak cleanpdf
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
 %.aux: %.tex
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
-%.bib: %.tex %.aux 
-	$(BIBTEX) $*
-	$(LATEX) $(LATEXOPTS) -output-format pdf $<
-	$(LATEX) $(LATEXOPTS) -output-format pdf $<
-%.gls:  %.aux %.tex
-	$(MAKEGLOS) $*
-	$(LATEX) $(LATEXOPTS) -output-format pdf $*
-	$(LATEX) $(LATEXOPTS) -output-format pdf $*
+%.bib: $(NAMEBASE).aux 
+	$(BIBTEX) $(NAMEBASE).aux 
+	$(LATEX) $(LATEXOPTS) -output-format pdf $(NAMEBASE).tex
+	#Since we do not make the target, we have to at least touch it.
+	touch $@ 
+%.gls: $(NAMEBASE).aux 
+	$(MAKEGLOS) $(NAMEBASE).aux 
+	$(LATEX) $(LATEXOPTS) -output-format pdf $(NAMEBASE).tex
+	#Since we do not make the target, we have to at least touch it.
+	touch $@
