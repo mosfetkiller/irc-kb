@@ -112,5 +112,3 @@ cleanall: clean cleanbak cleanpdf
 %.gls:	%.glo %.tex 
 	$(MAKEGLOS) $(NAMEBASE) 
 	$(LATEX) $(LATEXOPTS) -output-format pdf $(NAMEBASE).tex
-	#Since we do not make the target, we have to at least touch it.
-	touch $@
