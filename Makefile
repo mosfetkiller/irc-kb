@@ -49,11 +49,6 @@ all: tex
 # creates the target
 tex : $(TARGET)
 $(TARGET):  $(FEATUREDEPS) $(DEPENDENCIES)
-
-# creates a pdf-document from a tex-file
-%.pdf: %.tex %.toc %.aux
-	$(LATEX) $(LATEXOPTS) -output-format pdf $<
-	
 	#the first run of latex creates a $(NAMEBASE).glo file. 
 	#if such file exists the glossaries must be builded.
 	#this is a creepy hack which must be removed.
@@ -62,6 +57,10 @@ $(TARGET):  $(FEATUREDEPS) $(DEPENDENCIES)
 	#solution for this problem is a reload of make (via submake)
 	#during the building process ~jwa
 	if [ -a $(NAMEBASE).glo ]; then make $(NAMEBASE).gls; fi; 
+
+# creates a pdf-document from a tex-file
+%.pdf: %.tex %.toc %.aux
+	$(LATEX) $(LATEXOPTS) -output-format pdf $<
 
 # creates a div-file from a given tex
 %.dvi: %.tex %.toc %.aux
