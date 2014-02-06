@@ -16,7 +16,7 @@ DEPENDENCIES:=$(wildcard parts/*.tex)
 
 NAMEBASE=$(basename $(TARGET))
 FEATUREDEPS:=$(wildcard *.bib)
-TEMPORARY_FILES=$(addprefix $(NAMEBASE)., acn acr alg aux bak bbl blg dvi fdb_latexmk glg  glo  gls idx ilg ind ist lof log lot maf mtc mtc0 nav nlo out pdfsync ps snm synctex.gz tdo thm toc vrb xdy)
+TEMPORARY_FILES=$(addprefix $(NAMEBASE)., acn acr alg aux bak bbl blg dvi fls fdb_latexmk glg fglo gls idx ilg ind ist lof log lot maf mtc mtc0 nav nlo out pdfsync ps snm synctex.gz tdo thm toc vrb xdy)
 
 .PHONY: clean cleanpdf cleanbak cleanall %.gls all tex
 .SECONDARY: %.toc %.tex %.bib
@@ -49,14 +49,14 @@ all: tex
 # creates the target
 tex : $(TARGET)
 $(TARGET):  $(FEATUREDEPS) $(DEPENDENCIES)
-	#the first run of latex creates a $(NAMEBASE).glo file. 
-	#if such file exists the glossaries must be builded.
-	#this is a creepy hack which must be removed.
-	#problem: since the glo-file is created at runtime, 
-	#make doesn't detect it. a possible, but more creepy 
-	#solution for this problem is a reload of make (via submake)
-	#during the building process ~jwa
-	if [ -a $(NAMEBASE).glo ]; then make $(NAMEBASE).gls; fi; 
+# funny reload in case of glossary or bibtexfile -file
+ifneq (,$(wildcard $(NAMEBASE).glo))
+	make $(NAMEBASE).gls
+endif
+ifneq (,$(wildcard $(NAMEBASE).bib))
+	make $(NAMEBASE).bbl
+endif
+
 
 # creates a pdf-document from a tex-file
 %.pdf: %.tex %.toc %.aux
@@ -101,13 +101,12 @@ cleanall: clean cleanbak cleanpdf
 	$(LATEX) $(LATEXOPTS) -output-format pdf $<
 
 # makeing biblography
-%.bib: $(NAMEBASE).aux 
+%.bbl: %.aux %.bib %.tex
 	$(BIBTEX) $(NAMEBASE).aux 
 	$(LATEX) $(LATEXOPTS) -output-format pdf $(NAMEBASE).tex
-	#Since we do not make the target, we have to at least touch it.
-	touch $@ 
+	$(LATEX) $(LATEXOPTS) -output-format pdf $(NAMEBASE).tex
 
 # makeing glossaries
-%.gls:	%.glo %.tex 
-	$(MAKEGLOS) $(NAMEBASE) 
+%.gls:	%.aux %.glo %.tex 
+	$(MAKEGLOS) $(NAMEBASE)
 	$(LATEX) $(LATEXOPTS) -output-format pdf $(NAMEBASE).tex
