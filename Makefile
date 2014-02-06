@@ -1,4 +1,5 @@
 # Simple makefile for latex processing with glossaries
+# and new(!) with bibtex makeing.
 # Written by jwacalex for Team2 - SEP WS2012/13 @ Uni Passau
 # Revision by Doeme for #mosfetkiller @ irc.rizon.net 
 # You can find the current version there: 
